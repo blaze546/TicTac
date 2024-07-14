@@ -27,6 +27,7 @@ function startGame() {
     cellElements.forEach(cell => {
         cell.classList.remove(X_CLASS);
         cell.classList.remove(O_CLASS);
+        cell.innerText = '';  // Clear the text in each cell
         cell.removeEventListener('click', handleClick);
         cell.addEventListener('click', handleClick, { once: true });
     });
@@ -65,6 +66,7 @@ function isDraw() {
 
 function placeMark(cell, currentClass) {
     cell.classList.add(currentClass);
+    cell.innerText = currentClass.toUpperCase();  // Set the text to "X" or "O"
 }
 
 function swapTurns() {
@@ -88,3 +90,4 @@ function checkWin(currentClass) {
         });
     });
 }
+
