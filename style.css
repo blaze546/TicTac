@@ -4,27 +4,48 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f7f7f7;
+    background-color: #f0f0f0;
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
 .board {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
+    grid-template-columns: repeat(3, 120px);
     gap: 10px;
 }
 
 .cell {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2em;
+    font-size: 2.5em;
     cursor: pointer;
     border: 2px solid #000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+    transition: transform 0.2s;
+    position: relative;
+    z-index: 1; /* Ensure the cell is above the pseudo-element */
+}
+
+.cell::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    border-radius: 10px;
+    box-shadow: 5px 5px 15px #d4d4d4, -5px -5px 15px #ffffff;
+    z-index: -1; /* Ensure the pseudo-element is behind the cell */
+}
+
+.cell:hover {
+    transform: scale(1.1);
 }
 
 .winning-message {
@@ -39,6 +60,7 @@ body {
     color: #fff;
     padding: 20px;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
 .show {
@@ -50,6 +72,16 @@ button {
     padding: 10px;
     font-size: 1em;
     cursor: pointer;
+    border: none;
+    background-color: #6200ea;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #3700b3;
 }
 
 .x {
@@ -59,4 +91,6 @@ button {
 .o {
     color: blue;
 }
+
+
 
