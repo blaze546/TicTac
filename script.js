@@ -3,7 +3,6 @@ const cellElements = document.querySelectorAll('[data-cell]');
 const board = document.getElementById('game');
 const winningMessageElement = document.getElementById('winningMessage');
 const winningMessageTextElement = document.querySelector('[data-winning-message-text]');
-const restartButton = document.getElementById('restartButton');
 const X_CLASS = 'x';
 const O_CLASS = 'o';
 const WINNING_COMBINATIONS = [
@@ -19,8 +18,6 @@ const WINNING_COMBINATIONS = [
 let oTurn;
 
 startGame();
-
-restartButton.addEventListener('click', startGame);
 
 function startGame() {
     oTurn = false;
@@ -56,6 +53,11 @@ function endGame(draw) {
         winningMessageTextElement.innerText = `${oTurn ? "O's" : "X's"} Wins!`;
     }
     winningMessageElement.classList.add('show');
+    
+    setTimeout(() => {
+        winningMessageElement.classList.remove('show');
+        startGame();
+    }, 2000); // Change 2000 to the number of milliseconds you want the message to show
 }
 
 function isDraw() {
@@ -90,5 +92,8 @@ function checkWin(currentClass) {
         });
     });
 }
+
+
+
 
 
